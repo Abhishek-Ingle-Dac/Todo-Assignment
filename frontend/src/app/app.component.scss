@@ -1,0 +1,78 @@
+
+table.mat-table {
+  width: 100%;
+  background: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.05);
+}
+
+
+.mat-header-cell {
+  font-weight: 600;
+  background-color: #f1f3f5;
+  color: #343a40;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+
+.mat-cell {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #212529;
+}
+
+
+.mat-row:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease-in-out;
+}
+
+
+.mat-row:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+
+.mat-cell, .mat-header-cell {
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+.mat-column-id {
+  width: 60px;
+}
+.mat-column-assignedTo {
+  width: 150px;
+}
+.mat-column-status,
+.mat-column-dueDate,
+.mat-column-prority {
+  width: 120px;
+}
+.mat-column-comments {
+  width: auto;
+}
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+
+.mat-table-wrapper {
+  position: relative;
+}
+.mat-table-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  box-shadow: inset 0 -4px 4px -4px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}

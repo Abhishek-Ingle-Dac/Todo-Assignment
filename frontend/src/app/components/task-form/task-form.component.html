@@ -1,0 +1,46 @@
+<div class="modal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ isEditMode ? 'Edit Task' : 'New Task' }}</h5>
+        <button type="button" class="btn-close" (click)="close()"></button>
+      </div>
+      <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="assignedTo" class="form-label">Assigned To</label>
+            <input type="text" class="form-control" id="assignedTo" required [(ngModel)]="task.assignedTo" name="assignedTo">
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" required [(ngModel)]="task.status" name="status">
+              <option>Not Started</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="dueDate" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="dueDate" required [(ngModel)]="task.dueDate" name="dueDate">
+          </div>
+          <div class="mb-3">
+            <label for="prority" class="form-label">Priority</label>
+            <select class="form-select" id="prority" required [(ngModel)]="task.prority" name="prority">
+              <option>Low</option>
+              <option>Normal</option>
+              <option>High</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="comments" class="form-label">Description</label>
+            <textarea class="form-control" id="comments" rows="3" [(ngModel)]="task.comments" name="comments"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="!taskForm.form.valid">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
