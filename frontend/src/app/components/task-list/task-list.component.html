@@ -1,0 +1,50 @@
+<div class="task-header">
+  <h2>Tasks</h2>
+  <button (click)="openNewTask()" class="btn btn-primary">New Task</button>
+  <button (click)="refreshTasks()" class="btn btn-secondary">Refresh</button>
+</div>
+
+<input [(ngModel)]="searchText" placeholder="Search" class="form-control my-2"/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><input type="checkbox" /></th>
+      <th>Assigned To</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Priority</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of filteredTasks()">
+      <td><input type="checkbox" /></td>
+      <td>{{ task.assignedTo }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
+      <td>{{ task.prority }}</td>
+      <td>{{ task.comments }}</td>
+      <td>
+        <button class="btn btn-sm btn-warning" (click)="editTask(task)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="confirmDelete(task)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-task-form
+  *ngIf="selectedTask !== null || creatingNew"
+  [task]="selectedTask"
+  [isEditMode]="!!selectedTask"
+  (formClosed)="closeForm()"
+  (taskSaved)="refreshTasks()">
+</app-task-form>
+
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item" (click)="prevPage()">‹ Prev</li>
+    <li class="page-item active"><span>{{ currentPage }}</span></li>
+    <li class="page-item" (click)="nextPage()">Next ›</li>
+  </ul>
+</nav>
